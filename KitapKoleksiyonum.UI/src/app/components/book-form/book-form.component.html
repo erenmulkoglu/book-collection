@@ -1,0 +1,123 @@
+<div class="container">
+  <div class="form-wrapper">
+    <h2>{{ isEditMode ? '✏️ Kitap Düzenle' : '➕ Yeni Kitap Ekle' }}</h2>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Kitap Adı <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="title" 
+          [(ngModel)]="book.title" 
+          name="title" 
+          required
+          placeholder="Örn: 1984">
+      </div>
+
+      <div class="form-group">
+        <label for="author">Yazar <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="author" 
+          [(ngModel)]="book.author" 
+          name="author" 
+          required
+          placeholder="Örn: George Orwell">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Kategori <span class="required">*</span></label>
+          <select 
+            id="category" 
+            [(ngModel)]="book.categoryId" 
+            name="categoryId" 
+            required>
+            <option [value]="0" disabled>Kategori Seçin</option>
+            <option *ngFor="let cat of categories" [value]="cat.id">
+              {{ cat.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Okuma Durumu</label>
+          <select 
+            id="status" 
+            [(ngModel)]="book.status" 
+            name="status"
+            (change)="onStatusChange($event)">
+            <option [value]="ReadingStatus.ToRead">Okunacak</option>
+            <option [value]="ReadingStatus.Reading">Okunuyor</option>
+            <option [value]="ReadingStatus.Completed">Okundu</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="isbn">ISBN</label>
+          <input 
+            type="text" 
+            id="isbn" 
+            [(ngModel)]="book.isbn" 
+            name="isbn"
+            placeholder="978-0451524935">
+        </div>
+
+        <div class="form-group">
+          <label for="pageCount">Sayfa Sayısı</label>
+          <input 
+            type="number" 
+            id="pageCount" 
+            [(ngModel)]="book.pageCount" 
+            name="pageCount"
+            placeholder="328">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="publishDate">Yayın Tarihi</label>
+          <input 
+            type="date" 
+            id="publishDate" 
+            [value]="book.publishDate ? formatDate(book.publishDate) : ''"
+            (change)="onDateChange($event)"
+            name="publishDate">
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Değerlendirme (1-5)</label>
+          <input 
+            type="number" 
+            id="rating" 
+            [(ngModel)]="book.rating" 
+            name="rating"
+            min="1"
+            max="5"
+            placeholder="5">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Notlar</label>
+        <textarea 
+          id="notes" 
+          [(ngModel)]="book.notes" 
+          name="notes"
+          rows="4"
+          placeholder="Kitap hakkında notlarınız..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="cancel()">
+          İptal
+        </button>
+        <button type="submit" class="btn-primary">
+          {{ isEditMode ? 'Güncelle' : 'Kaydet' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="header">
+    <h1>📚 Kitap Koleksiyonum</h1>
+    <button class="btn-primary" routerLink="/book-form">+ Yeni Kitap Ekle</button>
+  </div>
+
+  <div class="filter-bar">
+    <button 
+      [class.active]="selectedStatus === 'all'" 
+      (click)="filterByStatus('all')">
+      Tümü
+    </button>
+    <button 
+      [class.active]="selectedStatus === '0'" 
+      (click)="filterByStatus('0')">
+      Okunacak
+    </button>
+    <button 
+      [class.active]="selectedStatus === '1'" 
+      (click)="filterByStatus('1')">
+      Okunuyor
+    </button>
+    <button 
+      [class.active]="selectedStatus === '2'" 
+      (click)="filterByStatus('2')">
+      Okundu
+    </button>
+  </div>
+
+  <div class="book-grid" *ngIf="filteredBooks.length > 0; else noBooks">
+    <div class="book-card" *ngFor="let book of filteredBooks">
+      <div class="book-header">
+        <h3>{{ book.title }}</h3>
+        <span [class]="getStatusClass(book.status)">
+          {{ getStatusText(book.status) }}
+        </span>
+      </div>
+      
+      <p class="author">👤 {{ book.author }}</p>
+      <p class="category">🏷️ {{ book.categoryName }}</p>
+      
+      <div class="book-details" *ngIf="book.pageCount || book.publishDate">
+        <span *ngIf="book.pageCount">📖 {{ book.pageCount }} sayfa</span>
+        <span *ngIf="book.publishDate">📅 {{ book.publishDate | date: 'yyyy' }}</span>
+      </div>
+
+      <div class="rating" *ngIf="book.rating">
+        <span *ngFor="let star of [1,2,3,4,5]">
+          {{ star <= book.rating! ? '⭐' : '☆' }}
+        </span>
+      </div>
+
+      <p class="notes" *ngIf="book.notes">{{ book.notes }}</p>
+
+      <div class="book-actions">
+        <button class="btn-edit" [routerLink]="['/book-form', book.id]">✏️ Düzenle</button>
+        <button class="btn-delete" (click)="deleteBook(book.id)">🗑️ Sil</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noBooks>
+    <div class="no-books">
+      <p>📚 Henüz kitap eklenmemiş!</p>
+      <button class="btn-primary" routerLink="/book-form">İlk Kitabı Ekle</button>
+    </div>
+  </ng-template>
+</div>
