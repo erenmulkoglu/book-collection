@@ -330,7 +330,7 @@ builder.Services.AddCors(options =>
 
 ## Lisans
 
-Bu proje eğitim amaçlı geliştirilmiştir.
+Bu proje tarafımca eğitim amaçlı sıfırdan inşa edilip geliştirilmiştir.
 
 
 
