@@ -130,3 +130,60 @@ ng serve
 ```
 
 Frontend: `http://localhost:4200`
+
+
+
+## Proje Yapısı
+```
+KitapKoleksiyonum/
+├── KitapKoleksiyonum.API/          # Backend (.NET 10)
+│   ├── Controllers/                # API Controllers
+│   │   ├── BooksController.cs
+│   │   └── CategoriesController.cs
+│   ├── Data/                       # Database Context
+│   │   ├── AppDbContext.cs
+│   │   └── AppDbContextFactory.cs
+│   ├── DTOs/                       # Data Transfer Objects
+│   │   └── BookDto.cs
+│   ├── Models/                     # Entity Models
+│   │   ├── Book.cs
+│   │   └── Category.cs
+│   ├── Migrations/                 # EF Core Migrations
+│   ├── Program.cs                  # Entry Point
+│   └── appsettings.json           # Configuration
+│
+└── KitapKoleksiyonum.UI/           # Frontend (Angular 20)
+    ├── src/
+    │   ├── app/
+    │   │   ├── components/         # Angular Components
+    │   │   │   ├── book-list/
+    │   │   │   ├── book-form/
+    │   │   │   └── category-list/
+    │   │   ├── models/             # TypeScript Interfaces
+    │   │   │   ├── book.model.ts
+    │   │   │   └── category.model.ts
+    │   │   ├── services/           # API Services
+    │   │   │   ├── book.service.ts
+    │   │   │   └── category.service.ts
+    │   │   ├── app.component.ts
+    │   │   ├── app.routes.ts
+    │   │   └── app.config.ts
+    │   ├── styles.css              # Global Styles
+    │   └── index.html
+    └── package.json
+```
+
+
+
+
+
+##  Ekran Görüntüleri
+
+### Ana Sayfa
+![Ana Sayfa](screenshots/home.png)
+
+### Kitap Ekleme/Düzenleme Formu
+![Form](screenshots/form.png)
+
+### Swagger API Dokümantasyonu
+![Swagger](screenshots/swagger.png)
