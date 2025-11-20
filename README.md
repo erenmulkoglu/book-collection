@@ -62,3 +62,71 @@
 - **Okunacak**: Henüz okunmamış kitaplar
 - **Okunuyor**: Şu anda okunan kitaplar
 - **Okundu**: Tamamlanan kitaplar
+
+
+##  Kurulum
+
+### Gereksinimler
+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [Node.js 18+](https://nodejs.org/)
+- [Angular CLI 20](https://angular.io/cli)
+- [SQL Server](https://www.microsoft.com/sql-server)
+
+### Backend Kurulumu
+
+1. **Projeyi klonlayın:**
+```bash
+cd KitapKoleksiyonum.API
+```
+
+2. **Bağımlılıkları yükleyin:**
+```bash
+dotnet restore
+```
+
+3. **Connection String'i düzenleyin:**
+
+`appsettings.json` dosyasında SQL Server bağlantı ayarlarını yapın:
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=KitapKoleksiyonumDB;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true"
+  }
+}
+```
+
+4. **Veritabanını oluşturun:**
+```bash
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
+5. **Uygulamayı çalıştırın:**
+```bash
+dotnet run
+```
+
+Backend: `http://localhost:5116`  
+Swagger: `http://localhost:5116/swagger`
+
+---
+
+### Frontend Kurulumu
+
+1. **Projeye gidin:**
+```bash
+cd KitapKoleksiyonum.UI
+```
+
+2. **Bağımlılıkları yükleyin:**
+```bash
+npm install
+```
+
+3. **Uygulamayı çalıştırın:**
+```bash
+ng serve
+```
+
+Frontend: `http://localhost:4200`
