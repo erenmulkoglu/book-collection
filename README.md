@@ -240,12 +240,16 @@ KitapKoleksiyonum/
 
 ### Ana Sayfa
 <img width="1905" height="1005" alt="image" src="https://github.com/user-attachments/assets/13c13b42-584d-49f8-92d4-22a0fa143cbd" />
+<img width="1542" height="1001" alt="image" src="https://github.com/user-attachments/assets/de203e38-791b-48b4-8d12-3bf08332cfc0" />
+<img width="1540" height="1002" alt="image" src="https://github.com/user-attachments/assets/fe740f67-32d8-4686-9d75-e8827330de4b" />
+<img width="1538" height="1002" alt="image" src="https://github.com/user-attachments/assets/a7ef378b-8d56-476e-93cb-120fdf201896" />
+
 
 ### Kitap Ekleme/Düzenleme Formu
-![Form](screenshots/form.png)
+<img width="1915" height="999" alt="image" src="https://github.com/user-attachments/assets/293f1ccc-7348-43ff-a2f9-adf9b283d484" />
 
 ### Swagger API Dokümantasyonu
-![Swagger](screenshots/swagger.png)
+<img width="1540" height="1001" alt="image" src="https://github.com/user-attachments/assets/a10bb1be-ef29-4693-8a00-341c438671e5" />
 
 
 
