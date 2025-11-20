@@ -239,7 +239,7 @@ KitapKoleksiyonum/
 ## Ekran Görüntüleri
 
 ### Ana Sayfa
-![Ana Sayfa](<img width="1905" height="1005" alt="image" src="https://github.com/user-attachments/assets/40c8ece2-64a0-44dd-8187-ecab28cadb50" />)
+<img width="1905" height="1005" alt="image" src="https://github.com/user-attachments/assets/13c13b42-584d-49f8-92d4-22a0fa143cbd" />
 
 ### Kitap Ekleme/Düzenleme Formu
 ![Form](screenshots/form.png)
