@@ -1,8 +1,11 @@
 # Kitap Koleksiyonum
 
+Kişisel kitap koleksiyonunuzu yönetmek için geliştirilmiş modern, full-stack web uygulaması.
+
 ![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=flat-square&logo=dotnet)
 ![Angular](https://img.shields.io/badge/Angular-20-DD0031?style=flat-square&logo=angular)
 ![MSSQL](https://img.shields.io/badge/MSSQL-Server-CC2927?style=flat-square&logo=microsoft-sql-server)
+
 
 
 ## Özellikler
@@ -18,7 +21,6 @@
 
 
 ## Teknolojiler
-
 
 ### Backend
 - **.NET 10** - Web API
@@ -41,30 +43,7 @@
 
 
 
-##  Kullanım
-
-### Kitap Ekleme
-1. Ana sayfada **"+ Yeni Kitap Ekle"** butonuna tıklayın
-2. Formu doldurun (Kitap Adı, Yazar, Kategori zorunludur)
-3. **"Kaydet"** butonuna tıklayın
-
-### Kitap Düzenleme
-1. Kitap kartındaki **"Düzenle"** butonuna tıklayın
-2. İstediğiniz alanları güncelleyin
-3. **"Güncelle"** butonuna tıklayın
-
-### Kitap Silme
-1. Kitap kartındaki **"Sil"** butonuna tıklayın
-2. Onay dialogunda **"Tamam"** seçin
-
-### Filtreleme
-- **Tümü**: Tüm kitapları gösterir
-- **Okunacak**: Henüz okunmamış kitaplar
-- **Okunuyor**: Şu anda okunan kitaplar
-- **Okundu**: Tamamlanan kitaplar
-
-
-##  Kurulum
+## Kurulum
 
 ### Gereksinimler
 
@@ -133,6 +112,87 @@ Frontend: `http://localhost:4200`
 
 
 
+##  Kullanım
+
+### Kitap Ekleme
+1. Ana sayfada **"+ Yeni Kitap Ekle"** butonuna tıklayın
+2. Formu doldurun (Kitap Adı, Yazar, Kategori zorunludur)
+3. **"Kaydet"** butonuna tıklayın
+
+### Kitap Düzenleme
+1. Kitap kartındaki **"Düzenle"** butonuna tıklayın
+2. İstediğiniz alanları güncelleyin
+3. **"Güncelle"** butonuna tıklayın
+
+### Kitap Silme
+1. Kitap kartındaki **"Sil"** butonuna tıklayın
+2. Onay dialogunda **"Tamam"** seçin
+
+### Filtreleme
+- **Tümü**: Tüm kitapları gösterir
+- **Okunacak**: Henüz okunmamış kitaplar
+- **Okunuyor**: Şu anda okunan kitaplar
+- **Okundu**: Tamamlanan kitaplar
+
+
+
+## API Endpoints
+
+### Books
+
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| GET | `/api/books` | Tüm kitapları listele |
+| GET | `/api/books/{id}` | ID'ye göre kitap getir |
+| POST | `/api/books` | Yeni kitap ekle |
+| PUT | `/api/books/{id}` | Kitap güncelle |
+| DELETE | `/api/books/{id}` | Kitap sil |
+
+### Categories
+
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| GET | `/api/categories` | Tüm kategorileri listele |
+| GET | `/api/categories/{id}` | ID'ye göre kategori getir |
+| POST | `/api/categories` | Yeni kategori ekle |
+| PUT | `/api/categories/{id}` | Kategori güncelle |
+| DELETE | `/api/categories/{id}` | Kategori sil |
+
+### Örnek Request (POST /api/books)
+```json
+{
+  "title": "1984",
+  "author": "George Orwell",
+  "isbn": "978-0451524935",
+  "pageCount": 328,
+  "publishDate": "1949-06-08T00:00:00.000Z",
+  "status": 2,
+  "rating": 5,
+  "notes": "Distopik bir başyapıt",
+  "categoryId": 1
+}
+```
+
+### Örnek Response
+```json
+{
+  "id": 1,
+  "title": "1984",
+  "author": "George Orwell",
+  "isbn": "978-0451524935",
+  "pageCount": 328,
+  "publishDate": "1949-06-08T00:00:00",
+  "status": 2,
+  "rating": 5,
+  "notes": "Distopik bir başyapıt",
+  "categoryId": 1,
+  "categoryName": "Roman",
+  "createdAt": "2024-11-19T10:30:00"
+}
+```
+
+
+
 ## Proje Yapısı
 ```
 KitapKoleksiyonum/
@@ -176,8 +236,7 @@ KitapKoleksiyonum/
 
 
 
-
-##  Ekran Görüntüleri
+## Ekran Görüntüleri
 
 ### Ana Sayfa
 ![Ana Sayfa](screenshots/home.png)
@@ -187,3 +246,98 @@ KitapKoleksiyonum/
 
 ### Swagger API Dokümantasyonu
 ![Swagger](screenshots/swagger.png)
+
+
+
+
+## Veritabanı Şeması
+
+### Books Tablosu
+| Sütun | Tip | Açıklama |
+|-------|-----|----------|
+| Id | int | Primary Key |
+| Title | nvarchar(200) | Kitap adı |
+| Author | nvarchar(150) | Yazar |
+| ISBN | nvarchar(20) | ISBN numarası |
+| PageCount | int | Sayfa sayısı |
+| PublishDate | datetime2 | Yayın tarihi |
+| Status | int | Okuma durumu (0-2) |
+| Rating | int | Değerlendirme (1-5) |
+| Notes | nvarchar(1000) | Notlar |
+| CategoryId | int | Foreign Key |
+| CreatedAt | datetime2 | Oluşturma tarihi |
+
+### Categories Tablosu
+| Sütun | Tip | Açıklama |
+|-------|-----|----------|
+| Id | int | Primary Key |
+| Name | nvarchar(100) | Kategori adı |
+| Description | nvarchar(500) | Açıklama |
+
+
+
+
+## CORS Yapılandırması
+
+Backend, frontend'den gelen isteklere izin vermek için CORS yapılandırması içerir:
+```csharp
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+```
+
+
+
+
+## Sorun Giderme
+
+### Backend çalışmıyor
+- SQL Server'ın çalıştığından emin olun
+- Connection string'i kontrol edin
+- Migration'ları çalıştırın: `dotnet ef database update`
+
+### Frontend çalışmıyor
+- Node.js ve Angular CLI'ın yüklü olduğundan emin olun
+- `npm install` komutunu çalıştırın
+- Backend'in çalıştığından emin olun
+
+### CORS hatası alıyorum
+- Backend'de CORS policy'nin doğru yapılandırıldığından emin olun
+- Frontend URL'inin `http://localhost:4200` olduğundan emin olun
+
+
+
+
+## Geliştirme İçin Notlar
+
+- Backend varsayılan olarak port **5116** üzerinde çalışır
+- Frontend varsayılan olarak port **4200** üzerinde çalışır
+- Swagger UI: `http://localhost:5116/swagger`
+- Hot reload her iki tarafta da aktif
+
+
+
+
+## Lisans
+
+Bu proje eğitim amaçlı geliştirilmiştir.
+
+
+
+## Geliştirici
+
+**Eren Mülkoğlu** - Senior Software Engineer
+
+
+
+
+## Teşekkürler
+
+
+**Projeyi beğendiyseniz yıldız vermeyi unutmayın!**
