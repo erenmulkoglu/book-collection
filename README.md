@@ -39,3 +39,26 @@
 - Dependency Injection
 - CORS yapılandırması
 
+
+
+##  Kullanım
+
+### Kitap Ekleme
+1. Ana sayfada **"+ Yeni Kitap Ekle"** butonuna tıklayın
+2. Formu doldurun (Kitap Adı, Yazar, Kategori zorunludur)
+3. **"Kaydet"** butonuna tıklayın
+
+### Kitap Düzenleme
+1. Kitap kartındaki **"Düzenle"** butonuna tıklayın
+2. İstediğiniz alanları güncelleyin
+3. **"Güncelle"** butonuna tıklayın
+
+### Kitap Silme
+1. Kitap kartındaki **"Sil"** butonuna tıklayın
+2. Onay dialogunda **"Tamam"** seçin
+
+### Filtreleme
+- **Tümü**: Tüm kitapları gösterir
+- **Okunacak**: Henüz okunmamış kitaplar
+- **Okunuyor**: Şu anda okunan kitaplar
+- **Okundu**: Tamamlanan kitaplar
